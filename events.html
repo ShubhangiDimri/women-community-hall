@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Hall - Events</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/events.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+    }
+
+    .quantity-selector button {
+        width: 30px;
+        height: 30px;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .quantity-selector .qty-input {
+        width: 50px;
+        text-align: center;
+        margin: 0 5px;
+        height: 30px;
+
+        /* Past Event Modal Styles */
+        #past-event-modal .modal-content {
+            max-width: 800px;
+        }
+
+        .past-event-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .past-event-meta span {
+            display: inline-block;
+            margin-right: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .past-event-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .past-event-image img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .past-event-description h3 {
+            margin-top: 1rem;
+            color: #e91e63;
+        }
+
+        #past-event-highlights {
+            margin-left: 1.5rem;
+        }
+
+        #past-event-highlights li {
+            margin-bottom: 0.5rem;
+        }
+
+        .past-event-stats {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        @media (min-width: 768px) {
+            .past-event-content {
+                flex-direction: row;
+            }
+
+            .past-event-image {
+                flex: 1;
+            }
+
+            .past-event-description {
+                flex: 2;
+                padding-left: 1.5rem;
+            }
+        }
+    }
+</style>
+<script src="js/past-events.js"></script>
+<script src="js/tickets.js"></script>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>Community Hall</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="forums.html">Forums</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#" id="login-btn">Login/Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="events-main">
+        <section class="events-header">
+            <h1>Upcoming Events</h1>
+            <div class="event-filters">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="workshop">Workshops</button>
+                <button class="filter-btn" data-filter="seminar">Seminars</button>
+                <button class="filter-btn" data-filter="cultural">Cultural</button>
+                <button class="filter-btn" data-filter="health">Health & Wellness</button>
+            </div>
+        </section>
+
+        <section class="events-list">
+            <div class="event-card" data-category="workshop">
+                <div class="event-image">
+                    <img src="https://www.aib.world/wp-content/uploads/2022/02/sustainability-professional-development-workshop.jpg"
+                        alt="Career Workshop">
+                </div>
+                <div class="event-details">
+                    <h3 style="color: black;">Career Development Workshop</h3>
+                    <div class="event-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 10, 2025</span>
+                        <span><i class="far fa-clock"></i> 2:00 PM - 4:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Main Hall</span>
+                    </div>
+                    <p>Join us for an interactive workshop on resume building, interview skills, and career advancement
+                        strategies specifically designed for women in the workforce.</p>
+                    <div class="event-footer">
+                        <span class="price">₹15.00</span>
+                        <!-- Career Development Workshop -->
+                        <button class="btn buy-ticket" data-event="Career Development Workshop" data-price="15"
+                            data-seat-front="2" data-seat-middle="1.5" data-seat-back="1.2" data-seat-any="1">Buy
+                            Ticket</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="health">
+                <div class="event-image">
+                    <img src="https://www.niehs.nih.gov/sites/default/files/health/assets/images/img895569.jpg"
+                        alt="Health Workshop">
+                </div>
+                <div class="event-details">
+                    <h3 style="color: black">Women's Health Workshop</h3>
+
+                    <div class="event-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+                        <span><i class="far fa-clock"></i> 10:00 AM - 12:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Conference Room</span>
+                    </div>
+                    <p>A comprehensive workshop covering women's health topics including nutrition, preventive care, and
+                        mental wellness with expert speakers from local healthcare providers.</p>
+                    <div class="event-footer">
+                        <span class="price">Free</span>
+                        <button class="btn buy-ticket" data-event="Women's Health Workshop" data-price="0">Buy
+                            Ticket</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="cultural">
+                <div class="event-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuBkD6hR_DEmseW3JfNkQIW-7ZFaj3-KWgoQ&s "
+                        alt="Cultural Event">
+                </div>
+                <div class="event-details">
+                    <h3 style="color: black">International Women's Day Celebration</h3>
+
+
+                    <div class="event-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 20, 2025</span>
+                        <span><i class="far fa-clock"></i> 6:00 PM - 9:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Outdoor Pavilion</span>
+                    </div>
+                    <p>Celebrate the diversity and achievements of women in our community with performances, food, and
+                        networking opportunities.</p>
+                    <div class="event-footer">
+                        <span class="price">₹10.00</span>
+                        <!-- international woments day celebration -->
+                        <button class="btn buy-ticket" data-event="International Women's Day Celebration"
+                            data-price="10" data-seat-front="3" data-seat-middle="2" data-seat-back="1.5"
+                            data-seat-any="1">Buy Ticket</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="seminar">
+                <div class="event-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQilAtxyLepQtkFA6AsXN7uXYrqDoJRt9NgpQ&s"
+                        alt="Financial Seminar">
+                </div>
+                <div class="event-details">
+                    <h3 style="color: black">Financial Independence Seminar</h3>
+
+                    <div class="event-meta">
+                        <span><i class="far fa-calendar-alt"></i> June 25, 2025</span>
+                        <span><i class="far fa-clock"></i> 5:30 PM - 7:30 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Main Hall</span>
+                    </div>
+                    <p>Learn about budgeting, investing, and financial planning from leading female financial advisors
+                        in our community.</p>
+                    <div class="event-footer">
+                        <span class="price">₹20.00</span>
+                        <!-- financial Independence Seminar -->
+                        <button class="btn buy-ticket" data-event="Financial Independence Seminar" data-price="20"
+                            data-seat-front="3" data-seat-middle="2" data-seat-back="1.5" data-seat-any="1">Buy
+                            Ticket</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card" data-category="workshop">
+                <div class="event-image">
+                    <img src="https://img.freepik.com/free-photo/people-looking-picture-albums_23-2149444423.jpg?semt=ais_hybrid&w=740"
+                        alt="Tech Workshop">
+                </div>
+                <div class="event-details">
+                    <h3 style="color: black">Tech Skills for Beginners</h3>
+
+                    <div class="event-meta">
+                        <span><i class="far fa-calendar-alt"></i> July 5, 2025</span>
+                        <span><i class="far fa-clock"></i> 3:00 PM - 5:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Computer Lab</span>
+                    </div>
+                    <p>An introductory workshop covering basic computer skills, internet safety, and using technology in
+                        daily life.</p>
+                    <div class="event-footer">
+                        <span class="price">₹12.00</span>
+                        <button class="btn buy-ticket" data-event="Tech Skills for Beginners" data-price="12"
+                            data-seat-front="2.5" data-seat-middle="1.7" data-seat-back="1.3" data-seat-any="1">Buy
+                            Ticket</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="past-events">
+            <h2>Past Events</h2>
+            <div class="events-grid">
+                <div class="past-event-card">
+                    <h3>Mental Health Awareness Day</h3>
+                    <p>April 15, 2025</p>
+                    <button class="btn view-details" data-event="mental-health">View Details</button>
+                </div>
+                <div class="past-event-card">
+                    <h3>Entrepreneurship Panel</h3>
+                    <p>April 18, 2025</p>
+                    <button class="btn view-details" data-event="entrepreneurship">View Details</button>
+                </div>
+                <div class="past-event-card">
+                    <h3>Community Potluck</h3>
+                    <p>April 10, 2025</p>
+                    <button class="btn view-details" data-event="potluck">View Details</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>123 Community Street</p>
+                <p>City, State 12345</p>
+                <p>info@communityhall.com</p>
+                <p>(123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="forums.html">Forums</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Community Hall. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Ticket Modal -->
+    <div id="ticket-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Book Tickets for <span id="event-title"></span></h2>
+            <form id="ticket-form">
+                <div class="form-group">
+                    <label for="ticket-name">Full Name</label>
+                    <input type="text" id="ticket-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="ticket-email">Email</label>
+                    <input type="email" id="ticket-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="ticket-phone">Phone Number</label>
+                    <input type="tel" id="ticket-phone">
+                </div>
+                <div class="form-group">
+                    <label for="ticket-qty">Number of Tickets</label>
+                    <div class="quantity-selector">
+                        <button type="button" class="qty-minus">-</button>
+                        <input type="number" id="ticket-qty" class="qty-input" value="1" min="1" max="10">
+                        <button type="button" class="qty-plus">+</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ticket-seats">Seat Preference (if applicable)</label>
+                    <select id="ticket-seats">
+                        <option value="any">Any</option>
+                        <option value="front">Front</option>
+                        <option value="middle">Middle</option>
+                        <option value="back">Back</option>
+                    </select>
+                </div>
+                <div class="payment-summary">
+                    <h3>Order Summary</h3>
+                    <p>Ticket Price: <span id="ticket-price">$15.00</span> each</p>
+                    <p>Quantity: <span id="ticket-quantity">1</span></p>
+                    <p class="total">Total: <span id="ticket-total">$15.00</span></p>
+                </div>
+                <button type="submit" class="btn">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login / Sign Up</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p>Don't have an account? <a href="#" id="show-signup">Sign up here</a></p>
+            </form>
+
+            <form id="signup-form" style="display: none;">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-phone">Phone Number</label>
+                    <input type="tel" id="signup-phone">
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Past Event Details Modal -->
+    <div id="past-event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="past-event-header">
+                <h2 id="past-event-title"></h2>
+                <div class="past-event-meta">
+                    <span><i class="far fa-calendar-alt"></i> <span id="past-event-date"></span></span>
+                    <span><i class="far fa-clock"></i> <span id="past-event-time"></span></span>
+                    <span><i class="fas fa-map-marker-alt"></i> <span id="past-event-location"></span></span>
+                </div>
+            </div>
+            <div class="past-event-content">
+                <div class="past-event-image">
+                    <img id="past-event-img" src="" alt="Past Event Image">
+                </div>
+                <div class="past-event-description">
+                    <h3>About This Event</h3>
+                    <p id="past-event-about"></p>
+
+                    <h3>What We Covered</h3>
+                    <ul id="past-event-topics"></ul>
+
+                    <h3>Highlights</h3>
+                    <div class="event-gallery" id="event-gallery"></div>
+                    <h3>Testimonials</h3>
+                    <div id="event-testimonials"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="success-popup"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9999; align-items:center; justify-content:center;">
+        <div
+            style="background:#fff; padding:2rem 3rem; border-radius:10px; text-align:center; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
+            <h2>Booked Successfully!</h2>
+            <p>Your tickets have been booked.</p>
+            <button class="close-success"
+                style="margin-top:1rem; padding:0.5rem 1.5rem; background:#4caf50; color:#fff; border:none; border-radius:5px; cursor:pointer;">Close</button>
+        </div>
+    </div>
+
+
+    <script src="js/script.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/ticket.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/past-event.js"></script>
+
+
+
+</body

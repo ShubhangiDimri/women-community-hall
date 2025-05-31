@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Hall - Forums</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/forums.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><h1>Community Hall</h1></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="forums.html" class="active">Forums</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="#" id="login-btn">Login/Signup</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="forums-main">
+    <section class="forum-header">
+      <h2>Discussion Forums</h2>
+      <p>Join conversations or start your own topic!</p>
+    </section>
+
+    <!-- AI Chatbot Button -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">
+      <i class="fas fa-robot"></i> Community Helper
+    </div>
+
+    <!-- AI Chatbot Panel -->
+    <div class="chatbot-panel" id="chatbotPanel">
+      <div class="chatbot-header">
+        <h3>Community Helper</h3>
+        <button onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chatbot-message">
+          <p>Hello! I'm your Community Helper. How can I assist you today?</p>
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbotQuery" placeholder="Ask about Community Hall...">
+        <button onclick="sendChatbotMessage()"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+
+    <section class="forum-posts" id="forumThreads">
+      <!-- Threads loaded dynamically via JS -->
+    </section>
+
+    <section class="forum-new-post">
+      <textarea id="newPost" placeholder="Start a discussion..."></textarea>
+      <button class="btn" onclick="postThread()">Post</button>
+    </section>
+  </main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>123 Community Street</p>
+            <p>City, State 12345</p>
+            <p>info@communityhall.com</p>
+            <p>(123) 456-7890</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="forums.html">Forums</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Community Hall. All rights reserved.</p>
+    </div>
+</footer>
+
+  <!-- Login Modal (same as other pages) -->
+  <div id="login-modal" class="modal"> ... </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/forums.js"></script>
+</body>
+</html>

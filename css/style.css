@@ -1,0 +1,371 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  /* Header */
+  header {
+    background-color: #f2f2f2;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo h1 {
+    color: #e91e63;
+  }
+  
+  nav ul {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  nav a {
+    color: #333;
+    padding: 0.5rem;
+  }
+  
+  nav a.active,
+  nav a:hover {
+    background-color: #e91e63;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    background: #e91e63;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background: #d81b60;
+  }
+  
+  /* Footer */
+  footer {
+    background: #333;
+    color: #fff;
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+  }
+  
+  .footer-section a {
+    color: #ccc;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Modal (Login & Payment shared styles) */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .modal-content .close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+
+  /* -----------------------video css */
+
+  /* Add this to style.css after the existing content */
+
+/* Video Background */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  width: 100%;
+    height: auto;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Update header styles to work with video bg */
+header {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1.5rem 5%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.logo h1 {
+  color: #fff; /* Changed from pink to white */
+}
+
+nav a {
+  color: #fff; /* Changed from dark to white */
+}
+
+/* Main content adjustments */
+main {
+  margin-top: 80px;
+  padding: 2rem 5%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Banner section */
+.banner {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.banner-content {
+  max-width: 800px;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+.banner h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.banner p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Mission section */
+.mission {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 10px;
+  margin: 3rem 0;
+  backdrop-filter: blur(5px);
+}
+
+.mission h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.mission p {
+  text-align: center;
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Events grid */
+.upcoming-events {
+  margin: 4rem 0;
+}
+
+.upcoming-events h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-card h3 {
+  padding: 1rem 1rem 0;
+  color: #fff;
+}
+
+.event-card p {
+  padding: 0 1rem 1rem;
+  color: #ddd;
+}
+
+.event-card .btn {
+  margin: 0 1rem 1rem;
+  display: inline-block;
+}
+
+/* Footer adjustments */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-section h3 {
+  color: #fff;
+}
+
+.footer-section a:hover {
+  color: #ff6b6b;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ff6b6b;
+}
+
+
+/* Add this to style.css as well */
+
+/* Modal enhancements */
+.modal-content {
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-content h2 {
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ddd;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.modal-content .close {
+  color: #fff;
+}
+
+.modal-content .close:hover {
+  color: #ff6b6b;
+}
+
+#show-signup, #show-login {
+  color: #ff6b6b;
+  text-decoration: underline;
+}
+
+/* Ensure visibility of text in all form inputs */
+input, select, textarea {
+  color: #333;
+  background-color: #fff;
+}
+
+/* Override specifically inside dark modals */
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
